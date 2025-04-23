@@ -17,7 +17,7 @@ export interface AuthState {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'https://myblog-lgth.onrender.com/api';
   private authStateSubject = new BehaviorSubject<AuthState>({
     isAuthenticated: false,
     user: null

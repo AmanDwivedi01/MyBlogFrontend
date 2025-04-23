@@ -7,7 +7,7 @@ import { BlogPost, Comment } from '../models/blog.model';
   providedIn: 'root'
 })
 export class BlogService {
-  private apiUrl = 'http://localhost:3000/api/blogs'; // Replace with your actual API URL
+  private apiUrl = 'https://myblog-lgth.onrender.com/api/blogs'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
 
