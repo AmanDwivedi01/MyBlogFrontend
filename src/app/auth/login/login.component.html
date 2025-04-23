@@ -1,0 +1,68 @@
+<div class="login-container" style="background-image: url('https://example.com/background-image.jpg'); height: 100vh; background-size: cover; background-position: center;">
+  <div class="login-bg" style="background-color: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <div class="login-content">
+      <div class="login-card">
+        <div class="login-header">
+          <h2>Welcome Back</h2>
+          <p>Sign in to continue to your blog dashboard</p>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-4">
+            <label for="email" class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <input type="email" 
+                     class="form-control" 
+                     id="email" 
+                     formControlName="email"
+                     placeholder="Enter your email">
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="fas fa-lock"></i>
+              </span>
+              <input type="password" 
+                     class="form-control" 
+                     id="password" 
+                     formControlName="password"
+                     placeholder="Enter your password">
+            </div>
+          </div>
+
+          <div class="form-check mb-4">
+            <input type="checkbox" 
+                   class="form-check-input" 
+                   id="rememberMe" 
+                   formControlName="rememberMe">
+            <label class="form-check-label" for="rememberMe">
+              <span class="me-2"></span>
+              Remember me
+            </label>
+          </div>
+
+          <div class="d-grid gap-2 mb-4">
+            <button type="submit" 
+                    class="btn btn-primary btn-lg" 
+                    [disabled]="isSubmitting">
+              <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-1"></span>
+              Sign In
+            </button>
+          </div>
+
+          <div class="text-center">
+            <a [routerLink]="['/signup']" class="text-decoration-none">
+              <i class="fas fa-user-plus me-1"></i>
+              Create New Account
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

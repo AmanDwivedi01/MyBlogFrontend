@@ -1,0 +1,150 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+  <div class="row">
+    <!-- Back Button -->
+    <div class="col-12 mb-4">
+      <div class="d-flex align-items-center justify-content-start">
+        <a (click)="goBack()" class="btn btn-outline-primary">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="col-12">
+      <div
+  class="blog-hero"
+  [ngStyle]="{
+    'background-image': blog?.image_url ? 'url(http://localhost:3000' + blog.image_url + ')' : 'url(https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80)'
+  }"
+>
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <h1 class="blog-title">{{blog.title}}</h1>
+            <div class="blog-meta">
+              <span class="author">
+                <i class="fas fa-user"></i>
+                {{ blog?.name }}
+              </span>
+              <span class="date">
+                <i class="fas fa-calendar"></i>
+                {{ blog?.created_at ? (blog.created_at | date:'MMMM d, y') : 'April 14, 2025' }}
+              </span>
+              <span class="reading-time">
+                <i class="fas fa-clock"></i>
+                7 min read
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-12 col-lg-8 mx-auto">
+      <div class="blog-content">
+        <div class="blog-body">
+          <p>
+            {{blog.content}}
+          </p>
+
+          <!-- <h2>Benefits of Positive Thinking</h2>
+          <ul>
+            <li>Improved mental health</li>
+            <li>Enhanced physical well-being</li>
+            <li>Increased resilience</li>
+            <li>Better problem-solving skills</li>
+            <li>Stronger relationships</li>
+          </ul>
+
+          <h3>How to Cultivate Positive Thinking</h3>
+          <p>
+            Developing a positive mindset takes practice and commitment. Here are some strategies to help you cultivate positive thinking:
+          </p>
+
+          <h4>1. Practice Gratitude</h4>
+          <p>
+            Start each day by listing three things you're grateful for. This simple practice can shift your focus from what's lacking to what's abundant in your life.
+          </p>
+
+          <h4>2. Challenge Negative Thoughts</h4>
+          <p>
+            When negative thoughts arise, question their validity. Ask yourself if there's evidence to support these thoughts or if you're catastrophizing.
+          </p> -->
+
+           <!-- <blockquote> 
+
+            <footer>
+              <cite>{{blog.name}}</cite>
+            </footer>
+          </blockquote> -->
+
+          <!-- <h3>Real-Life Applications</h3>
+          <p>
+            Positive thinking isn't just a feel-good concept; it has practical applications in various aspects of life:
+          </p> -->
+
+          <!-- <h4>Workplace Success</h4>
+          <p>
+            A positive attitude can lead to better job performance, improved relationships with colleagues, and increased opportunities for advancement.
+          </p> -->
+
+          <!-- <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80" alt="Person thinking positively"> -->
+
+          <!-- <h4>Personal Growth</h4>
+          <p>
+            By maintaining a positive outlook, individuals can overcome challenges more effectively and achieve their personal goals with greater determination.
+          </p> -->
+
+          <!-- <div class="blog-tags mt-5">
+            <span class="tag">Self-Improvement</span>
+            <span class="tag">Mindset</span>
+            <span class="tag">Personal Growth</span>
+            <span class="tag">Motivation</span>
+          </div> -->
+
+          <!-- Social Share -->
+          <!-- <div class="social-share mt-5">
+            <h4>Share this post:</h4>
+            <div class="social-buttons">
+              <button class="social-btn">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+              <button class="social-btn">
+                <i class="fab fa-twitter"></i>
+              </button>
+              <button class="social-btn">
+                <i class="fab fa-linkedin-in"></i>
+              </button>
+            </div>
+          </div> -->
+
+          <!-- Author Info -->
+          <div class="author-info mt-5">
+            <div class="author-avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80" alt="John Doe" class="rounded-circle">
+            </div>
+            <div class="author-details">
+              <h4>{{blog.name}}</h4>
+              <p>
+                {{blog.name}} is a professional writer and motivational speaker who specializes in personal development and positive psychology. He has written several books on the power of positive thinking and its impact on personal success.
+              </p>
+              <!-- <div class="author-social">
+                <a href="https://twitter.com/johndoe" target="_blank" class="social-link">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://linkedin.com/in/johndoe" target="_blank" class="social-link">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div> -->
+            </div>
+          </div>
+
+          <!-- Related Posts -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

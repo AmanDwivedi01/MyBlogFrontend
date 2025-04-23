@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/dashboard">
+      <i class="fas fa-blog"></i> Blog App
+    </a>
+    <div class="navbar-nav ms-auto">
+      <div class="nav-item dropdown" *ngIf="isAuthenticated">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+           href="#" (click)="toggleDropdown($event)" [attr.aria-expanded]="showDropdown">
+          <i class="fa fa-user me-2"></i>
+          {{ username }}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown" aria-labelledby="navbarDropdown">
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" (click)="logout($event)">
+            <i class="fa fa-sign-out-alt me-2"></i> Logout
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

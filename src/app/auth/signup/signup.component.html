@@ -1,0 +1,187 @@
+<div class="container">
+  <div class="row justify-content-center min-vh-100 align-items-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="signup-header">
+            <h2>Sign Up</h2>
+            <p>Let's get you started with your blog journey</p>
+            <div class="progress mb-4">
+              <div class="progress-bar" 
+                   role="progressbar" 
+                   [style.width.%]="(currentStep / 3) * 100" 
+                   [attr.aria-valuenow]="currentStep" 
+                   aria-valuemin="0" 
+                   aria-valuemax="3">
+              </div>
+            </div>
+          </div>
+
+          <form *ngIf="currentStep === 1" [formGroup]="emailForm" (ngSubmit)="onSubmitEmail()">
+            <div class="form-group mb-4">
+              <label for="email" class="form-label">Email Address</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <input type="email" 
+                       class="form-control" 
+                       id="email" 
+                       formControlName="email"
+                       placeholder="Enter your email address">
+              </div>
+              <div *ngIf="email?.touched && email?.invalid" class="text-danger small mt-2">
+                <div *ngIf="email?.errors?.['required']">Email is required</div>
+                <div *ngIf="email?.errors?.['email']">Please enter a valid email address</div>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 mb-4">
+              <button type="submit" 
+                      class="btn btn-primary btn-lg" 
+                      [disabled]="isSubmitting || !emailForm.valid">
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-1"></span>
+                Continue
+              </button>
+            </div>
+
+            <div class="text-center">
+              <a [routerLink]="['/login']" class="text-decoration-none">
+                <i class="fas fa-sign-in-alt me-1"></i>
+                Already have an account? Sign In
+              </a>
+            </div>
+          </form>
+
+          <form *ngIf="currentStep === 2" [formGroup]="otpForm" (ngSubmit)="onSubmitOTP()">
+            <div class="form-group mb-4">
+              <label for="otp" class="form-label">Enter OTP</label>
+              <p class="text-muted mb-3">
+                We've sent a 6-digit code to {{ email?.value }}
+              </p>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-key"></i>
+                </span>
+                <input type="text" 
+                       class="form-control" 
+                       id="otp" 
+                       formControlName="otp"
+                       placeholder="Enter 6-digit code">
+              </div>
+              <div *ngIf="otp?.touched && otp?.invalid" class="text-danger small mt-2">
+                <div *ngIf="otp?.errors?.['required']">OTP is required</div>
+                <div *ngIf="otp?.errors?.['minlength']">OTP must be 6 digits</div>
+                <div *ngIf="otp?.errors?.['maxlength']">OTP must be 6 digits</div>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 mb-4">
+              <button type="submit" 
+                      class="btn btn-primary btn-lg" 
+                      [disabled]="isSubmitting || !otpForm.valid">
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-1"></span>
+                Verify OTP
+              </button>
+            </div>
+
+            <div class="text-center">
+              <button type="button" 
+                      class="btn btn-link text-decoration-none" 
+                      (click)="resendOTP()">
+                <i class="fas fa-sync-alt me-1"></i>
+                Resend OTP
+              </button>
+            </div>
+          </form>
+
+          <form *ngIf="currentStep === 3" [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
+            <div class="form-group mb-4">
+              <label for="name" class="form-label">Name</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-user"></i>
+                </span>
+                <input type="text"
+                       class="form-control"
+                       id="name"
+                       formControlName="name"
+                       placeholder="Enter your name">
+              </div>
+              <div *ngIf="name?.touched && name?.invalid" class="text-danger small mt-2">
+                <div *ngIf="name?.errors?.['required']">Name is required</div>
+                <div *ngIf="name?.errors?.['maxlength']">Name cannot exceed 50 characters</div>
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="password" class="form-label">New Password</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" 
+                       class="form-control" 
+                       id="password" 
+                       formControlName="password"
+                       placeholder="Create a new password">
+              </div>
+              <div *ngIf="password?.touched && password?.invalid" class="text-danger small mt-2">
+                <div *ngIf="password?.errors?.['required']">Password is required</div>
+                <div *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters</div>
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" 
+                       class="form-control" 
+                       id="confirmPassword" 
+                       formControlName="confirmPassword"
+                       placeholder="Confirm your password">
+              </div>
+              <div *ngIf="confirmPassword?.touched && confirmPassword?.invalid" class="text-danger small mt-2">
+                <div *ngIf="confirmPassword?.errors?.['required']">Please confirm your password</div>
+              </div>
+              <div *ngIf="passwordForm.errors?.['mismatch']" class="text-danger small mt-2">
+                Passwords do not match
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 mb-4">
+              <button type="submit" 
+                      class="btn btn-primary btn-lg" 
+                      [disabled]="isSubmitting || !passwordForm.valid">
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-1"></span>
+                Create Account
+              </button>
+            </div>
+
+            <div class="text-center">
+              <a [routerLink]="['/login']" class="text-decoration-none">
+                <i class="fas fa-arrow-left me-1"></i>
+                Back to Login
+              </a>
+            </div>
+          </form>
+
+          <div *ngIf="emailError" class="alert alert-danger mt-4">
+            {{ emailError }}
+          </div>
+
+          <div *ngIf="otpError" class="alert alert-danger mt-4">
+            {{ otpError }}
+          </div>
+
+          <div *ngIf="passwordError" class="alert alert-danger mt-4">
+            {{ passwordError }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
