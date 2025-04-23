@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/api'  // Update this to your backend URL
+  apiUrl: 'https://myblog-lgth.onrender.com/api'  // Update this to your backend URL
 };
