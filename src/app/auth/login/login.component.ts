@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     const password = this.loginForm.value.password;
     this.authService.login(email, password).subscribe(
       (response) => {
-        console.log('Login successful:', response);
+        // console.log('Login successful:', response);
         // Encrypt id for path param
         const secretKey = 'Blog@123';
         const encryptedId = CryptoJS.AES.encrypt(response.user.id.toString(), secretKey).toString();

@@ -66,49 +66,49 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         tap((response: any) => {
-          console.log('=== Login Response Debug ===');
-          console.log('Full response:', response);
-          console.log('Response structure:', {
-            hasMessage: 'message' in response,
-            message: response?.message,
-            hasToken: 'token' in response,
-            hasUser: 'user' in response
-          });
+          // console.log('=== Login Response Debug ===');
+          // console.log('Full response:', response);
+          // console.log('Response structure:', {
+          //   hasMessage: 'message' in response,
+          //   message: response?.message,
+          //   hasToken: 'token' in response,
+          //   hasUser: 'user' in response
+          // });
 
           if (!response || !response.token || !response.user) {
-            console.error('Invalid response format:', {
-              hasResponse: !!response,
-              hasToken: !!response?.token,
-              hasUser: !!response?.user
-            });
+            // console.error('Invalid response format:', {
+            //   hasResponse: !!response,
+            //   hasToken: !!response?.token,
+            //   hasUser: !!response?.user
+            // });
             return;
           }
 
           // Check user object structure
-          console.log('User object structure:', {
-            hasId: 'id' in response.user,
-            hasName: 'name' in response.user,
-            hasEmail: 'email' in response.user,
-            hasCreatedAt: 'created_at' in response.user,
-            user: response.user
-          });
+          // console.log('User object structure:', {
+          //   hasId: 'id' in response.user,
+          //   hasName: 'name' in response.user,
+          //   hasEmail: 'email' in response.user,
+          //   hasCreatedAt: 'created_at' in response.user,
+          //   user: response.user
+          // });
 
           // Verify user properties
-          console.log('User properties:', {
-            id: response.user?.id,
-            name: response.user?.name,
-            email: response.user?.email
-          });
+          // console.log('User properties:', {
+          //   id: response.user?.id,
+          //   name: response.user?.name,
+          //   email: response.user?.email
+          // });
 
           // Save data
           this.storageService.setToken(response.token);
           this.storageService.setUser(response.user);
           
           // Log what's being saved
-          console.log('Saving to storage:', {
-            token: response.token,
-            user: response.user
-          });
+          // console.log('Saving to storage:', {
+          //   token: response.token,
+          //   user: response.user
+          // });
 
           // Set auth state
           this.setAuthState(true, response.user);
@@ -118,10 +118,10 @@ export class AuthService {
           localStorage.setItem('auth_token', response.token);
 
           // Verify localStorage
-          console.log('Verifying localStorage:', {
-            user: localStorage.getItem('user_data'),
-            token: localStorage.getItem('auth_token')
-          });
+          // console.log('Verifying localStorage:', {
+          //   user: localStorage.getItem('user_data'),
+          //   token: localStorage.getItem('auth_token')
+          // });
         })
       );
   }
@@ -139,7 +139,7 @@ export class AuthService {
     this.setAuthState(false, null);
     
     // Log out action
-    console.log('User logged out successfully');
+    // console.log('User logged out successfully');
   }
 
   sendVerificationEmail(email: string): Observable<any> {
@@ -152,12 +152,12 @@ export class AuthService {
 
   sendOTP(email: string): Observable<any> {
     const url = this.formatUrl('send-otp');
-    console.log(url)
+    // console.log(url)
     const body = {
       email: email
     };
-    console.log('Sending OTP to URL:', url);
-    console.log('Sending OTP body:', body);
+    // console.log('Sending OTP to URL:', url);
+    // console.log('Sending OTP body:', body);
     return this.http.post(url, body, this.getHttpOptions())
       .pipe(
         tap((response: any) => {
