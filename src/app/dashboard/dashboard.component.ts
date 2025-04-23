@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
       this.blogService.getPostCount(userId).subscribe(
         res => {
           this.postCount = res.count;
-          console.log(this.postCount);
+          // console.log(this.postCount);
         },
         error => {
           console.error('Error fetching post count:', error);
@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit {
       this.blogService.getAllBlog(userId).subscribe(
         res => {
           this.allBlogs = res;
-          console.log(res);
+          // console.log(res);
           // console.log(this.postCount);
         },
         error => {

@@ -93,7 +93,7 @@ export class BlogDetailComponent implements OnInit {
           const decryptedObj = CryptoUtil.decryptUrlParams(encryptedData);
           if (decryptedObj && decryptedObj.blog_id) {
             this.blog_id = decryptedObj.blog_id;
-            console.log(this.blog_id);
+            // console.log(this.blog_id);
             this.getDetails();
           } else {
             console.error('Decrypted object missing blog_id:', decryptedObj);
@@ -117,7 +117,7 @@ getDetails()
   this.blogService.getBlogDetails(this.blog_id).subscribe({
     next: (res:any) => {
       this.blog = res[0];
-      console.log(this.blog)
+      // console.log(this.blog)
     },
     error: (error) => {
       console.error('Error fetching blog details:', error);

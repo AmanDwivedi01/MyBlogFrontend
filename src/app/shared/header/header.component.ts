@@ -20,32 +20,32 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.authState$.subscribe(state => {
-      console.log('=== Header Auth State ===');
-      console.log('Full auth state:', state);
-      console.log('Auth state structure:', {
-        isAuthenticated: state.isAuthenticated,
-        hasUser: !!state.user
-      });
+      // console.log('=== Header Auth State ===');
+      // console.log('Full auth state:', state);
+      // console.log('Auth state structure:', {
+      //   isAuthenticated: state.isAuthenticated,
+      //   hasUser: !!state.user
+      // });
 
       this.isAuthenticated = state.isAuthenticated;
       // Safely access name or email if present, and ensure username is always a string
       const user = state.user as any;
       // Debug: Log user object received in auth state
-      console.log('HeaderComponent user:', user);
+      // console.log('HeaderComponent user:', user);
       
       // Check user properties
-      console.log('User properties:', {
-        id: user?.id,
-        name: user?.name,
-        email: user?.email
-      });
+      // console.log('User properties:', {
+      //   id: user?.id,
+      //   name: user?.name,
+      //   email: user?.email
+      // });
 
       this.username = typeof user?.name === 'string' && user.name
         ? user.name
         : (typeof user?.email === 'string' ? user.email : '');
       
       // Check final username value
-      console.log('Final username:', this.username);
+      // console.log('Final username:', this.username);
       
       this.profileImageUrl = state.user?.avatar || '/assets/images/default-avatar.png';
     });
@@ -72,6 +72,15 @@ export class HeaderComponent implements OnInit {
         const dropdown = new bootstrap.Dropdown(dropdownElement);
         dropdown.toggle();
       }
+    }
+  }
+  onCancel(): void {
+    // debugger
+    const encryptedId = localStorage.getItem('encryptedId') || '';
+    if (encryptedId) {
+      this.router.navigate(['/dashboard', encryptedId]);
+    } else {
+      this.router.navigate(['/dashboard']);
     }
   }
 }
