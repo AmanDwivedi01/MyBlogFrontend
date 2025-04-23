@@ -33,12 +33,12 @@ export interface Blog {
   providedIn: 'root'
 })
 export class BlogService {
-  private apiUrl = 'http://localhost:3000/api/blogs';
+  private apiUrl = 'https://myblog-lgth.onrender.com/api/blogs';
 
   constructor(private http: HttpClient) {}
 
   getPostCount(userId: string): Observable<{ count: number }> {
-    return this.http.get<{ count: number }>(`http://localhost:3000/api/blogs/posts/count/${Number(userId)}`);
+    return this.http.get<{ count: number }>(`https://myblog-lgth.onrender.com/api/blogs/posts/count/${Number(userId)}`);
   }
 
   getBlogStats(): Observable<BlogStats> {
@@ -50,10 +50,10 @@ export class BlogService {
   }
 
   getAllBlog(id: string): Observable<Blog[]> {
-    return this.http.get<Blog[]>(`http://localhost:3000/api/blogs/posts/all/${Number(id)}`);
+    return this.http.get<Blog[]>(`https://myblog-lgth.onrender.com/api/blogs/posts/all/${Number(id)}`);
   }
   getBlogDetails(id: string): Observable<Blog[]> {
-    return this.http.get<Blog[]>(`http://localhost:3000/api/blogs/posts/details/view/${Number(id)}`);
+    return this.http.get<Blog[]>(`https://myblog-lgth.onrender.com/api/blogs/posts/details/view/${Number(id)}`);
   }
   getBlog(id: string): Observable<Blog> {
     return this.http.get<Blog>(`${this.apiUrl}/${id}`);
@@ -68,7 +68,7 @@ export class BlogService {
   }
 
   deleteBlog(id: string): Observable<void> {
-    return this.http.delete<void>(`http://localhost:3000/api/blogs/posts/delete/${id}`);
+    return this.http.delete<void>(`https://myblog-lgth.onrender.com/api/blogs/posts/delete/${id}`);
   }
 
   approveComment(commentId: string): Observable<void> {
