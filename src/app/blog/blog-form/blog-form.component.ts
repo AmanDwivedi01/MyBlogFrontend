@@ -16,7 +16,7 @@ export class BlogFormComponent implements OnInit {
   imagePreview: string | null = null;
   encryptedId: string = '';
   imageFile: File | undefined = undefined;
-  private readonly API_URL = 'http://localhost:3000/api/blog/new';
+  private readonly API_URL = 'https://myblog-lgth.onrender.com/api/blog/new';
   isEdit: any;
   blog_id: any;
   blog: any;
@@ -206,7 +206,7 @@ if (imageFile) {
     formData.forEach((value, key) => {
       console.log('FormData:', key, value);
     });
-    fetch(`http://localhost:3000/api/blogs/posts/update/${blogId}`, {
+    fetch(`https://myblog-lgth.onrender.com/api/blogs/posts/update/${blogId}`, {
       method: 'PUT',
       body: formData
     })
