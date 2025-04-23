@@ -16,7 +16,7 @@ export class BlogFormComponent implements OnInit {
   imagePreview: string | null = null;
   encryptedId: string = '';
   imageFile: File | undefined = undefined;
-  private readonly API_URL = 'https://myblog-lgth.onrender.com/api/blog/new';
+  private readonly API_URL = 'https://myblog-lgth.onrender.com/api/blogs/new';
   isEdit: any;
   blog_id: any;
   blog: any;
@@ -158,7 +158,7 @@ export class BlogFormComponent implements OnInit {
       formData.append('image', imageFile);
     }
   
-    fetch('https://myblog-lgth.onrender.com/api/blog/new', {
+    fetch('https://myblog-lgth.onrender.com/api/blogs/new', {
       method: 'POST',
       body: formData
     })
